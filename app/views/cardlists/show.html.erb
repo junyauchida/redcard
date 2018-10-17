@@ -1,0 +1,90 @@
+<h1>Cardlists#show</h1>
+
+<%= @cardlist.cardlist_name %>
+
+<table>
+	<thead>
+		<tr>
+			<th>表</th>
+			<th>裏</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cards.each do |card|%>
+		<tr>
+			<td><%= card.front %></td>
+				<td class="back">
+				<script>
+				$(function() {
+
+				// clickイベントでdiv-actionCSSが適用されている要素を、クリックするとイベントが発火します。
+				$('.div-action').on('click', function()  {
+
+				// クリック要素をthisで取得してtext-colorの追加または削除
+				$(this).toggleClass('background-color');
+				});
+
+				});
+				</script>
+				<style>
+				/*変更する文字色のCSSクラス*/
+				.background-color {color: white;}
+				</style>
+
+				<div class="div-action">
+				<%= card.back %>
+				</div>
+				</td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+
+<h2><%= link_to "カードリスト編集", edit_cardlist_path(@cardlist.id) %></h2>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>テスト</title>
+    <!--JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+
+        // clickイベントでdiv-actionCSSが適用されている要素を、クリックするとイベントが発火します。
+            $('.div-action').on('click', function()  {
+
+        // クリック要素をthisで取得してtext-colorの追加または削除
+          $(this).toggleClass('background-color');
+          });
+
+        });
+    </script>
+    <style>
+        /*変更する文字色のCSSクラス*/
+        .background-color {color: white;}
+    </style>
+</head>
+
+
+
+<body>
+    <div>
+    </div>
+    <div class="div-action">
+        <p>テスト</p>
+    </div>
+</body>
+</html>
+
+
+
+

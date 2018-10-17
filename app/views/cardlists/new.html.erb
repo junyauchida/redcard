@@ -1,0 +1,9 @@
+<h1>Cardlists#new</h1>
+
+<%= form_for (@cardlist) do |c| %>
+<p>カードリスト名</p>
+<%= c.text_field :cardlist_name %>
+<%= c.submit '登録' %>
+<%end%>
+
+<h2><%= link_to "カードリスト一覧へ", cardlists_path %></h2>

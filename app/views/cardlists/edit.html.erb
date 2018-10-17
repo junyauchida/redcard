@@ -1,0 +1,34 @@
+<h1>Cardlists#edit</h1>
+
+<%= form_for (@cardlist) do |f| %>
+<%= f.text_field :cardlist_name %>
+<%= f.submit "更新" %>
+<%end%>
+
+<h2>
+<%= form_for [@cardlist, @card] do |c| %>
+<%= c.text_field :front %>
+<%= c.text_field :back %>
+<%= c.submit "登録" %>
+<%end%>
+
+<% @cardlist.cards.each do |card| %>
+	<%= form_for ([@cardlist, card]) do |f|%>
+		<%= f.text_field :front%>
+		<%= f.text_field :back %>
+		<% if card.check == false %>
+			<%= link_to '覚えてない！', cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
+		<% else %>
+			<%= link_to '覚えた！' , cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
+		<% end %>
+
+		<%= f.submit "更新" %>
+		<%= link_to "削除", cardlist_card_path(@cardlist.id, card.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %>
+	<% end %>
+<% end %>
+
+<p><%= link_to "カードリスト一覧", cardlists_path %></p>
+<p><%=  link_to "学習", cardlist_path(@cardlist.id) %></p>
+</h2>
+
+<p><%= link_to "ログアウト",destroy_user_session_path, method: :delete %></p>
