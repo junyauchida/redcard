@@ -1,0 +1,18 @@
+<h1>Cardlists#index</h1>
+
+<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>カードリスト名</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cardlists.each do |card| %>
+			<tr>
+				<td><%= card.cardlist_name %></td>
+				<td><%= link_to "学習", cardlist_path(card.id) %></td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>

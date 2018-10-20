@@ -1,24 +1,53 @@
 <h1>Cardlists#index</h1>
 
-<table>
-	<thead>
-		<tr>
-			<th>カードリスト名</th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @cardlists.each do |c| %>
-		<tr>
-			<td><%= c.cardlist_name %></td>
-			<td><%= link_to "学習", cardlist_path(c.id) %></td>
-			<td><%= link_to "編集", edit_cardlist_path(c.id) %></td>
-			<td><%= link_to "削除", cardlist_path(c.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %></td>
-		</tr>
-		<%end%>
-	</tbody>
-</table>
+<% if current_user == @user %>
 
-<h2><%= link_to "カードリスト作成へ", new_cardlist_path %></h2>
+	<%= form_for (@cardlist) do |c| %>
+	<p>カードリスト名</p>
+	<%= c.text_field :cardlist_name %>
+	<%= c.submit '登録' %>
+	<% end %>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>カードリスト名</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cardlists.each do |c| %>
+			<tr>
+				<td><%= c.cardlist_name %></td>
+				<td><%= link_to "学習", cardlist_path(c.id) %></td>
+				<td><%= link_to "編集", edit_cardlist_path(c.id) %></td>
+				<td><%= link_to "削除", cardlist_path(c.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %></td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>
+
+<% else %>
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>カードリスト名</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @cardlists.each do |c| %>
+			<tr>
+				<td><%= c.cardlist_name %></td>
+				<td><%= link_to "学習", cardlist_path(c.id) %></td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>
+
+<% end %>

@@ -10,6 +10,49 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <% if user_signed_in? %>
+          <p>ログイン中　<%= current_user.user_name %>さん</p>
+          <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></p>
+          <br>
+
+          <p><%= link_to user_path(current_user.id), class: 'btn btn-default' do %>
+            <i class="fa fa-arrow-left"></i>
+            <span class="glyphicon glyphicon-home" aria-hidden="true"> マイページ</span>
+          <% end %>
+          </p>
+
+          <P>
+          <%= link_to users_path, class: 'btn btn-default' do %>
+            <i class="fa fa-arrow-left"></i>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザー</span>
+          <% end %>
+          </P>
+
+          <p><%= link_to cardlists_index_path(current_user.id), class: 'btn btn-default' do %>
+            <i class="fa fa-arrow-left"></i>
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"> カードリスト</span>
+          <% end %>
+          </p>
+
+          <p><%= link_to cardlists_index_all_users_path, class: 'btn btn-default' do %>
+            <i class="fa fa-arrow-left"></i>
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"> 全ユーザーのカードリスト</span>
+          <% end %>
+          </p>
+
+          <% else %>
+          <p><%= link_to 'ログイン', users_path %></p>
+          <p><%= link_to '新規登録', new_user_registration_path %></p>
+          <% end %>
+        </div>
+        <div class="col-sm-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
+
 </html>
