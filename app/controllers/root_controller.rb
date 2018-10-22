@@ -1,4 +1,5 @@
 class RootController < ApplicationController
-  def top
+
+def top
   end
 end

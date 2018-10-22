@@ -5,10 +5,12 @@
 <%= f.text_field :user_name %>
 <br>
 <br>
-<p>email</p>
+<p>メールアドレス</p>
 <%= f.email_field :email %>
 <br>
 <br>
+<p>イメージ</p>
+<%= f.attachment_field :image %>
 <%=f.submit "完了"%>
 <% end %>
 <br>

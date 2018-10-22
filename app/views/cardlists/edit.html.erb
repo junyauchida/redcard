@@ -1,4 +1,4 @@
-<h1>Cardlists#edit</h1>
+<h1>カードリスト編集</h1>
 
 <%= form_for (@cardlist) do |f| %>
 <%= f.text_field :cardlist_name %>
@@ -13,9 +13,18 @@
 <%end%>
 <br>
 
+<h4>
+<span>覚えたカード <%= num1 = @cards.where(check: 'true').count %>枚</span>
+<br>
+<span>全てのカード <%= num2 = @cards.count %>枚</span>
+</h4>
+
+<% num = (num1.to_f / num2).round(2)  %>
+<% num = (num*100).to_i %>
+
 <div class="progress">
-	<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" style="width: 40%;">
-		40%
+	<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" style="width:<%= num %>%;">
+		<%= num %>%
 	</div>
 </div>
 

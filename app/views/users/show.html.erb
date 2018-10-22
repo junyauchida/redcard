@@ -1,25 +1,16 @@
-<% if current_user == @user %>
-	<h1>マイページ</h1>
-<% else %>
-	<h1><%= @user.user_name %></h1>
-<% end %>
+<h1>マイページ</h1>
 
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>カードリスト一覧</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @cardlists.each do |card| %>
-		<tr>
-			<td><%= card.cardlist_name %></td>
-			<td><%= link_to "学習", cardlist_path(card.id) %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<p>ユーザー名</p>
+<%= @user.user_name %>
+<br>
+<br>
+<p>メールアドレス</p>
+<%= @user.email %>
+<br>
+<br>
+<p>イメージ</p>
+<%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg' %>
+
+<br>
 
 <p><%= link_to "ユーザー情報の編集", edit_user_path(@user.id) %></p>
-<p><%#= link_to "カードリスト編集", edit_cardlist_path(@cardlist.id) %></p>

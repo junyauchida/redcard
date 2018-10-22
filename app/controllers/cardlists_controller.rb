@@ -32,6 +32,7 @@ class CardlistsController < ApplicationController
   def edit
   	@cardlist = Cardlist.find(params[:id])
   	@card = Card.new
+    @cards = @cardlist.cards.all
   end
 
   def update
