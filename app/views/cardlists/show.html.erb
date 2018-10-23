@@ -10,25 +10,18 @@
 	<tbody>
 		<% @cards.each do |card|%>
 		<tr>
-			<td><%= card.front %></td>
-				<td class="back">
+			<td><%= simple_format(card.front) %></td>
 
-				<script>
-				$(function() {
-				$('.div-action').on('click', function()  {
-				$(this).toggleClass('background-color');
-				});
+			<td class="back">
+			<style>
+			.background-color {background-color: white;}
+			</style>
 
-				});
-				</script>
-				<style>
-				.background-color {color: white;}
-				</style>
+			<div class="div-action">
+			<%= simple_format(card.back) %>
+			</div>
+			</td>
 
-				<div class="div-action">
-				<%= card.back %>
-				</div>
-				</td>
 		</tr>
 		<%end%>
 	</tbody>
@@ -36,8 +29,11 @@
 
 <h2><%= link_to "カードリスト編集", edit_cardlist_path(@cardlist.id) %></h2>
 
+<script>
+$(function(){
+$('.div-action').on('click', function()  {
+$(this).toggleClass('background-color');
+});
 
-
-
-
-
+});
+</script>

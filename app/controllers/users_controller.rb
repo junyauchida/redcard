@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
   # @user = current_user
     @user = User.find(params[:id])
-  	@cardlists = Cardlist.where(user_id: @user.id)
+  #	@cardlists = Cardlist.where(user_id: @user.id)
   end
 
   def index
