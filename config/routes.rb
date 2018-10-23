@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
 	resources :users
 	resources :cardlists do
+		resource :favorites, only: [:create, :destroy]
 		resources :cards
 		patch 'cards/:id/check' => 'cards#update2' , as: 'update2'
 	end

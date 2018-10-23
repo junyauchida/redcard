@@ -5,6 +5,7 @@
 			<tr>
 				<th>カードリスト名</th>
 				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -12,6 +13,17 @@
 			<tr>
 				<td><%= card.cardlist_name %></td>
 				<td><%= link_to "学習", cardlist_path(card.id) %></td>
+				<td>
+					<% if card.favorited_by?(current_user) %>
+						 <%= link_to cardlist_favorites_path(card.id), method: :delete do %>
+						 <%= card.favorites.count %>いいね
+						 <% end %>
+					<% else %>
+						 <%= link_to cardlist_favorites_path(card.id), method: :post do %>
+						 <%= card.favorites.count %>いいね
+						 <% end %>
+					<% end %>
+				</td>
 			</tr>
 			<%end%>
 		</tbody>
