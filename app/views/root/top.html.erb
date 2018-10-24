@@ -1,22 +1,35 @@
-<div class="container">
-	<div class="jumbotron text-center">
+<div class="jumbotron jumbotron-extend">
+<div class="container-fluid">
 		<div class="row">
-			<div class="col">
+			<div class="col-md-5 col-md-offset-2">
 
-				<h1>Root#top</h1>
-				<p>サイト名</p>
+				<p>単語暗記サイト</p>
+				<h1>Name</h1>
 
 					<button type="button" class="btn btn-default"><%= link_to "ログイン", new_user_session_path %></button>
 
-					<button type="button" class="btn btn-default"><%= link_to "ユーザー登録", new_user_registration_path %></button>
+					<button type="button" class="btn btn-default"><%= link_to "新規登録", new_user_registration_path %></button>
 
 			</div>
 		</div>
 	</div>
 </div>
 
+<div class="jumbotron">
 <div class="container">
-	<div class="jumbotron text-center">
+		<div class="row">
+			<div class="col-md-6">
+				<%= image_tag("picture3.jpg") %>
+			</div>
+			<div class="col-md-5 col-md-offset-1">
+				<h3>繰り返して覚えることで<br>記憶を定着させます</h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="jumbotron text-center">
+<div class="container">
 		<div class="row">
 			<div class="col">
 				<h3>こんなことができます</h3>
@@ -25,12 +38,3 @@
 	</div>
 </div>
 
-<div class="container">
-	<div class="jumbotron text-center">
-		<div class="row">
-			<div class="col">
-				<h3>あんなこともできます</h3>
-			</div>
-		</div>
-	</div>
-</div>
