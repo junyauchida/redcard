@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <div class="jumbotron app">
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -75,11 +76,14 @@ function toggle() {
           <p><%= link_to '新規登録', new_user_registration_path %></p>
           <% end %>
         </div>
+
+<!--  -->
         <div class="col-sm-9">
           <%= yield %>
         </div>
       </div>
     </div>
+  </div>
   </body>
 
 </html>

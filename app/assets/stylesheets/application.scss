@@ -16,6 +16,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.top1 {
+  color :#DB5454;
+}
+
+.top2 {
+    background-color :#FFFFFF;
+}
+
+.app {
+  background-color :#E6E6E6;
+}
+
 .col-sm-3 {
 	margin-top :30px;
 }
@@ -28,7 +40,7 @@
 }
 
 .div-action{
-	background-color :#DB5454;;
+	background-color :#DB5454;
 	border-radius: 5px;
 }
 
@@ -49,5 +61,8 @@
 
 .ebbinghaus {
     background-image: url("picture3.jpg")
+}
 
+.form {
+  background-color :#F4EFB8;
 }

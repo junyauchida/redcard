@@ -6,12 +6,12 @@
 
   <div class="field">
     <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
+    <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", :class => 'form' %>
   </div>
 
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, autocomplete: "current-password", :class => 'form' %>
   </div>
 
   <br>

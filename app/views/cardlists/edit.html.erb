@@ -1,14 +1,14 @@
-<h1>カードリスト編集</h1>
+<h2>カードリスト編集</h2>
 
 <%= form_for (@cardlist) do |f| %>
-<%= f.text_field :cardlist_name %>
+<%= f.text_field :cardlist_name, :class => 'form' %>
 <%= f.submit "更新" %>
 <%end%>
 <br>
 
 <%= form_for [@cardlist, @card] do |c| %>
-<%= c.text_area :front, :size => "40x5" %>
-<%= c.text_area :back, :size => "40x5" %>
+<%= c.text_area :front, :size => "40x5", :class => 'form' %>
+<%= c.text_area :back, :size => "40x5", :class => 'form' %>
 <%= c.submit "登録" %>
 <%end%>
 <br>
@@ -42,8 +42,8 @@
 		<% @cardlist.cards.each do |card| %>
 	    <%= form_for ([@cardlist, card]) do |f|%>
 		<tr>
-			<td><%= f.text_area :front, :size => "40x5" %></td>
-			<td><%= f.text_area :back, :size => "40x5" %></td>
+			<td><%= f.text_area :front, :size => "40x5", :class => 'form' %></td>
+			<td><%= f.text_area :back, :size => "40x5", :class => 'form' %></td>
 			<td><%= f.submit "更新" %></td>
 			<td>
 			  <%= link_to "削除", cardlist_card_path(@cardlist.id, card.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %>
