@@ -14,9 +14,9 @@
 <br>
 
 <h4>
-<span>覚えたカード <%= num1 = @cards.where(check: 'true').count %>枚</span>
+<span>覚えたカード <%= num1 = @cardlist.cards.where(check: 'true').count %>枚</span>
 <br>
-<span>全てのカード <%= num2 = @cards.count %>枚</span>
+<span>全てのカード <%= num2 = @cardlist.cards.count %>枚</span>
 </h4>
 
 <% num = (num1.to_f / num2).round(2)  %>
@@ -39,29 +39,33 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @cardlist.cards.each do |card| %>
-	    <%= form_for ([@cardlist, card]) do |f|%>
-		<tr>
-			<td><%= f.text_area :front, :size => "40x5", :class => 'form' %></td>
-			<td><%= f.text_area :back, :size => "40x5", :class => 'form' %></td>
-			<td><%= f.submit "更新" %></td>
-			<td>
-			  <%= link_to "削除", cardlist_card_path(@cardlist.id, card.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %>
-			</td>
-			<td>
-		      <% if card.check == false %>
-			    <%= link_to '覚えてない！', cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
-		      <% else %>
-			    <%= link_to '覚えた！' , cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
-		      <% end %>
-			</td>
-		</tr>
-		<% end %>
+		<% @cards.each do |card| %>
+		    <%= form_for ([@cardlist, card]) do |f|%>
+				<tr>
+					<td><%= f.text_area :front, :size => "40x5", :class => 'form' %></td>
+					<td><%= f.text_area :back, :size => "40x5", :class => 'form' %></td>
+					<td><%= f.submit "更新" %></td>
+					<td>
+					  <%= link_to "削除", cardlist_card_path(@cardlist.id, card.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %>
+					</td>
+					<td>
+				      <% if card.check == false %>
+					    <%= link_to '覚えてない！', cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
+				      <% else %>
+					    <%= link_to '覚えた！' , cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
+				      <% end %>
+					</td>
+				</tr>
+			<% end %>
         <% end %>
 	</tbody>
+
 </table>
+	<%= paginate @cards, class: "pagenate" %>
+
 
 <h1><%= link_to "学習", cardlist_path(@cardlist.id) %></h1>
+
 
 <!--  -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />

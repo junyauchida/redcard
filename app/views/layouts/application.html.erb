@@ -10,10 +10,10 @@
   </head>
 
   <body>
-    <div class="jumbotron app">
-    <div class="container">
+    <div class="container app">
       <div class="row">
-        <div class="col-sm-3">
+        <!-- サイドバー -->
+        <div class="col-sm-3 sidebar">
           <% if user_signed_in? %>
           <p>ログイン中　<%= current_user.user_name %>さん</p>
           <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></p>
@@ -77,13 +77,12 @@ function toggle() {
           <% end %>
         </div>
 
-<!--  -->
+<!-- メイン -->
         <div class="col-sm-9">
           <%= yield %>
         </div>
       </div>
     </div>
-  </div>
   </body>
 
 </html>

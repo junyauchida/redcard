@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @cards.each do |card|%>
+		<% @cardspage.each do |card|%>
 		<tr>
 			<td><%= simple_format(card.front) %></td>
 
@@ -27,8 +27,10 @@
 	</tbody>
 </table>
 
+<%= paginate @cardspage, class: "pagenate" %>
 <h2><%= link_to "カードリスト編集", edit_cardlist_path(@cardlist.id) %></h2>
 
+<!-- app.jsへ -->
 <script>
 $(function(){
 $('.div-action').on('click', function()  {
