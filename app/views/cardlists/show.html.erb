@@ -28,7 +28,15 @@
 </table>
 
 <%= paginate @cardspage, class: "pagenate" %>
-<h2><%= link_to "カードリスト編集", edit_cardlist_path(@cardlist.id) %></h2>
+
+<% if @cardlist.user.id == current_user.id %>
+	<p><%= link_to edit_cardlist_path(@cardlist.id), class: 'btn btn-default btn-lg btn-block' do %>
+	<i class="fa fa-arrow-left"></i>
+	カードリスト編集
+	<% end %>
+	</p>
+<% else %>
+<% end %>
 
 <!-- app.jsへ -->
 <script>

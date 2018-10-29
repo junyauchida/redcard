@@ -16,11 +16,13 @@
 				<td>
 					<% if card.favorited_by?(current_user) %>
 						 <%= link_to cardlist_favorites_path(card.id), method: :delete do %>
-						 <%= card.favorites.count %>いいね
+						 <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						 <%= card.favorites.count %> いいね ありがとう！
 						 <% end %>
 					<% else %>
 						 <%= link_to cardlist_favorites_path(card.id), method: :post do %>
-						 <%= card.favorites.count %>いいね
+						 <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+						 <%= card.favorites.count %> いいね する！
 						 <% end %>
 					<% end %>
 				</td>

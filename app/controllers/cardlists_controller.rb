@@ -26,13 +26,13 @@ class CardlistsController < ApplicationController
   def show
   	@cardlist = Cardlist.find(params[:id])
     @cards = @cardlist.cards.where(check: false)
-    @cardspage = @cards.page(params[:page]).per(5).reverse_order
+    @cardspage = @cards.page(params[:page]).per(10).reverse_order
   end
 
   def edit
   	@cardlist = Cardlist.find(params[:id])
   	@card = Card.new
-    @cards = @cardlist.cards.page(params[:page]).per(5).reverse_order
+    @cards = @cardlist.cards.page(params[:page]).per(10).reverse_order
   end
 
   def update
