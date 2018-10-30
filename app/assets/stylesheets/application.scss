@@ -16,6 +16,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  padding-top: 70px;
+}
+
 .top1 {
   color :#DB5454;
 }
@@ -24,16 +28,12 @@
     background-color :#FFFFFF;
 }
 
-.app
-
-.sidebar
+.affix
 
 .col-sm-3 {
 	margin-top :30px;
 }
 
-.container {
-}
 
 .back{
 	color: #DB5454;;
@@ -56,7 +56,7 @@
     height: 100vh;
     min-height: 300px;
     background-size: cover;
-    background-image: url("top2.jpg")
+    background-image: url("picture1.jpg")
 }
 
 .ebbinghaus {
@@ -66,4 +66,19 @@
 .form {
   background-color :#F4EFB8;
 }
+
+//ヘッダー 通常
+.drawer-navbar{
+  border: none;
+}
+
+//ヘッダー 通常
+.drawer-menu
+
+//ヘッダー レスポンシブ
+.drawer-navbar-header{
+  border: none;
+  padding-bottom :50px;
+}
+
 

@@ -5,16 +5,67 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- drawer.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+    <!-- iScroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <!-- drawer.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+
+
+
+
+
   </head>
 
-  <body>
-    <div class="container app">
+<!-- ハンバーガー -->
+
+
+
+
+<!-- ヘッダー -->
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        タイトル
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarEexample8">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">メニューＡ</a></li>
+        <li><a href="#">メニューB</a></li>
+        <li><a href="#">メニューＣ</a></li>
+        <li><p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p></li>
+      </ul>
+
+      <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
+    </div>
+  </div>
+</nav> -->
+<!--  -->
+
+<body class="drawer drawer--right drawer--navbarTopGutter">
+  <%= render 'layouts/header' %>
+    <div class="container">
       <div class="row">
 
         <!-- サイドバー -->
-        <div class="col-md-3 sidebar">
+<!--         <div class="col-md-3">
           <% if user_signed_in? %>
           <p>ログイン中　<%= current_user.user_name %>さん</p>
           <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></p>
@@ -49,12 +100,11 @@
           <p><%= link_to 'ログイン', users_path %></p>
           <p><%= link_to '新規登録', new_user_registration_path %></p>
           <% end %>
-        </div>
+        </div> -->
 
 <!-- メイン -->
-        <div class="col-md-9">
-          <%= yield %>
-        </div>
+
+        <%= yield %>
       </div>
     </div>
   </body>
