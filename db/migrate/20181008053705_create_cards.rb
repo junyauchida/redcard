@@ -7,7 +7,6 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :no
       t.text :front
       t.text :back
-      t.string :check
       t.integer :cardlist_id
 
       t.timestamps
