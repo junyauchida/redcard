@@ -12,13 +12,31 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 
 
-$(document).ready(function() {
-  $('.drawer').drawer();
-});
 
+$(function(){
+	$('.div-action').on('click', function()  {
+		$(this).toggleClass('background-color');
+	});
+
+
+
+	var $header = $('#top-head');
+    // Nav Fixed
+    $(window).scroll(function() {
+    	if ($(window).scrollTop() > 100) {
+    		$header.addClass('fixed');
+    	} else {
+    		$header.removeClass('fixed');
+    	}
+    });
+    // Nav Toggle Button
+    $('#nav-toggle').click(function(){
+    	$header.toggleClass('open');
+    });
+
+});

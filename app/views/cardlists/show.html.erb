@@ -10,16 +10,12 @@
 	<tbody>
 		<% @cardspage.each do |card|%>
 		<tr>
-			<td><%= simple_format(card.front) %></td>
+			<td class="show-front"><%= simple_format(card.front) %></td>
 
 			<td class="back">
-			<style>
-			.background-color {background-color: white;}
-			</style>
-
-			<div class="div-action">
-			<%= simple_format(card.back) %>
-			</div>
+				<div class="div-action">
+				<%= simple_format(card.back) %>
+				</div>
 			</td>
 
 		</tr>
@@ -37,13 +33,35 @@
 	</p>
 <% else %>
 <% end %>
+<!-- <script>
+	$(function(){
+	$('.div-action').on('click', function()  {
+	// $(this).toggleClass('background-color');
 
-<!-- app.jsへ -->
-<script>
-$(function(){
-$('.div-action').on('click', function()  {
-$(this).toggleClass('background-color');
-});
+	if ($(this).hasClass('background-color')) {
+		$(this).removeClass('background-color');
+	} else {
+		$(this).addClass('background-color');
+	}
+
+	});
+
+
+
+    var $header = $('#top-head');
+    // Nav Fixed
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 100) {
+            $header.addClass('fixed');
+        } else {
+            $header.removeClass('fixed');
+        }
+    });
+    // Nav Toggle Button
+    $('#nav-toggle').click(function(){
+        $header.toggleClass('open');
+    });
 
 });
-</script>
+</script> -->
+

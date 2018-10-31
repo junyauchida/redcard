@@ -42,18 +42,23 @@
 		<% @cards.each do |card| %>
 		    <%= form_for ([@cardlist, card]) do |f|%>
 				<tr>
-					<td><%= f.text_area :front, :size => "40x5", :class => 'form' %></td>
-					<td><%= f.text_area :back, :size => "40x5", :class => 'form' %></td>
+					<td><%= f.text_area :front, :class => 'form2' %></td>
+					<td><%= f.text_area :back, :class => 'form2' %></td>
 					<td><%= f.submit "更新" %></td>
 					<td>
 					  <%= link_to "削除", cardlist_card_path(@cardlist.id, card.id), method: :delete, "data-confirm"=>"本当に削除しますか？" %>
 					</td>
 					<td>
 				      <% if card.check == false %>
-					    <%= link_to '覚えてない！', cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
+				         <%= link_to cardlist_update2_path(@cardlist.id, card.id),method: :patch do %>
+					     <span class="glyphicon glyphicon-star star2" aria-hidden="true"></span>
+				         <% end %>
 				      <% else %>
-					    <%= link_to '覚えた！' , cardlist_update2_path(@cardlist.id, card.id),method: :patch %>
+				         <%= link_to cardlist_update2_path(@cardlist.id, card.id),method: :patch do %>
+					     <span class="glyphicon glyphicon-star star1" aria-hidden="true"></span>
+				         <% end %>
 				      <% end %>
+
 					</td>
 				</tr>
 			<% end %>

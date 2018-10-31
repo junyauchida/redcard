@@ -20,3 +20,20 @@
 ユーザー情報の編集
 <% end %>
 </p>
+
+<% if user_signed_in? %>
+          <p>ログイン中　<%= current_user.user_name %>さん</p>
+              <%= link_to destroy_user_session_path, method: :delete,"data-confirm"=>"ログアウトしますか？", :class => 'navbar-link', class:'btn btn-default' do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"> ログアウト</span>
+              <% end %>
+<% else %>
+          <p><%= link_to 'ログイン', users_path %></p>
+          <p><%= link_to '新規登録', new_user_registration_path %></p>
+<% end %>
+
+<div class="getout">
+  <%= link_to "退会手続き", user_registration_path, method: :delete,"data-confirm"=>"本当に退会しますか？" %>
+</div>
+
+
+

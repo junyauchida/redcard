@@ -4,7 +4,7 @@
 			<div class="col-md-5 col-md-offset-2 top1">
 
 				<p>単語暗記サイト</p>
-				<h1>Name</h1>
+				<h1>RedCard</h1>
 
 					<button type="button" class="btn btn-default"><%= link_to "ログイン", new_user_session_path %></button>
 
@@ -18,21 +18,30 @@
 <div class="jumbotron top2">
 <div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<%= image_tag("picture3.jpg") %>
+			<div class="col-md-6 picture-iphone">
+				<%#= image_tag "picture3.jpg", :size => "300x600" %>
+				<%= image_tag "/images/picture3.jpg", :size => "300x600" %>
+
 			</div>
-			<div class="col-md-5 col-md-offset-1">
-				<h3>繰り返して覚えることで<br>記憶を定着させます</h3>
+			<div class="col-md-6">
+				<h2>赤い部分をクリックすると正解を確認できます。<br>
+				<br>答えがわからなかった時は時間を置いて再度学習しましょう。</h2>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="jumbotron text-center">
+<div class="jumbotron top2">
 <div class="container">
 		<div class="row">
-			<div class="col">
-				<h3>こんなことができます</h3>
+			<div class="col-md-6 picture-iphone">
+				<%#= image_tag "picture2.jpg", :size => "300x600" %>
+				<%= image_tag "/images/picture2.jpg", :size => "300x600" %>
+			</div>
+			<div class="col-md-6">
+				<h2>覚えたカードは表示させないようにできます。<br>
+				<br>覚えたカードが学習の度に表示されると煩わしいものです。<br>
+			    <br>時間を置いた後に確認しましょう。</h2>
 			</div>
 		</div>
 	</div>
