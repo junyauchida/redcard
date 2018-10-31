@@ -1,16 +1,39 @@
 <h1>マイページ</h1>
 
-<p>ユーザー名</p>
-<%= @user.user_name %>
-<br>
-<br>
-<p>メールアドレス</p>
-<%= @user.email %>
-<br>
-<br>
-<p>イメージ</p>
-<%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg' %>
+<table class="table">
+	<tr>
+		<th>ユーザー名</th>
+		<td><%= @user.user_name %></td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td><%= @user.email %></td>
+	</tr>
+	<tr>
+		<th>イメージ</th>
+		<td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg' %></td>
+	</tr>
+</table>
 
-<br>
+<p><%= link_to edit_user_path(@user.id), class: 'btn btn-default btn-lg btn-block' do %>
+<i class="fa fa-arrow-left"></i>
+ユーザー情報の編集
+<% end %>
+</p>
 
-<p><%= link_to "ユーザー情報の編集", edit_user_path(@user.id) %></p>
+<% if user_signed_in? %>
+          <p>ログイン中　<%= current_user.user_name %>さん</p>
+              <%= link_to destroy_user_session_path, method: :delete,"data-confirm"=>"ログアウトしますか？", :class => 'navbar-link', class:'btn btn-default' do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"> ログアウト</span>
+              <% end %>
+<% else %>
+          <p><%= link_to 'ログイン', users_path %></p>
+          <p><%= link_to '新規登録', new_user_registration_path %></p>
+<% end %>
+
+<div class="getout">
+  <%= link_to "退会手続き", user_registration_path, method: :delete,"data-confirm"=>"本当に退会しますか？" %>
+</div>
+
+
+

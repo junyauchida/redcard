@@ -1,89 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Cards</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>RedCard</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <body>
-    <div class="jumbotron app">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <% if user_signed_in? %>
-          <p>ログイン中　<%= current_user.user_name %>さん</p>
-          <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></p>
-          <br>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-          <p><%= link_to user_path(current_user.id), class: 'btn btn-default' do %>
-            <i class="fa fa-arrow-left"></i>
-            <span class="glyphicon glyphicon-home" aria-hidden="true"> マイページ</span>
-          <% end %>
-          </p>
+</head>
 
-          <p><%= link_to cardlists_index_path(current_user.id), class: 'btn btn-default' do %>
-            <i class="fa fa-arrow-left"></i>
-            <span class="glyphicon glyphicon-tags" aria-hidden="true"> マイカードリスト</span>
-          <% end %>
-          </p>
-
-          <p><%= link_to cardlists_index_all_users_path, class: 'btn btn-default' do %>
-            <i class="fa fa-arrow-left"></i>
-            <span class="glyphicon glyphicon-tags" aria-hidden="true"> みんなのカードリスト</span>
-          <% end %>
-          </p>
-
-          <P>
-          <%= link_to users_path, class: 'btn btn-default' do %>
-            <i class="fa fa-arrow-left"></i>
-            <span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザー</span>
-          <% end %>
-          </P>
-
-<!-- ドロップダウン -->
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-    MENU
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li role="presentation"><a href="#">リンク１</a></li>
-    <li role="presentation"><a href="#">リンク２</a></li>
-    <li role="presentation"><a href="#">リンク３</a></li>
-  </ul>
-</div>
-<!--  -->
-
-<!-- アニメーション付き開閉ボックス -->
-<br>
-<script>
-function toggle() {
-  $('.toggle-box').slideToggle('slow');
-}
-</script>
-
-<a class="toggle-link" href="javascript:toggle();">MENU</a>
-<div class="toggle-box">
-<p>ここにコンテンツが入ります。</p>
-</div>
-<!--  -->
-          <% else %>
-          <p><%= link_to 'ログイン', users_path %></p>
-          <p><%= link_to '新規登録', new_user_registration_path %></p>
-          <% end %>
+<body class="all">
+  <!-- ヘッダー -->
+  <header id="top-head">
+    <div class="inner">
+      <div id="mobile-head">
+        <h1 class="logo">RedCard</h1>
+        <div id="nav-toggle">
+          <div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
+      </div>
+      <nav id="global-nav">
+        <ul>
+          <li>
+            <a>
+              <%= link_to user_path(current_user.id), class:'btn btn-default' do %>
+              <span class="glyphicon glyphicon-user" aria-hidden="true"> マイページ</span>
+              <% end %>
+            </a>
+          </li>
+          <li>
+            <a>
+              <%= link_to cardlists_index_path(current_user.id), class:'btn btn-default' do %>
+              <span class="glyphicon glyphicon-tags" aria-hidden="true"> マイカードリスト</span>
+              <% end %>
+            </a>
+          </li>
+          <li>
+            <a>
+              <%= link_to cardlists_index_all_users_path, class:'btn btn-default' do %>
+              <span class="glyphicon glyphicon-tags" aria-hidden="true"> みんなのカードリスト</span>
+              <% end %>
+            </a>
+          </li>
+          <li>
+            <a>
+              <%= link_to destroy_user_session_path, method: :delete,"data-confirm"=>"ログアウトしますか？", :class => 'navbar-link', class:'btn btn-default' do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"> ログアウト</span>
+              <% end %>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<!--  -->
-        <div class="col-sm-9">
-          <%= yield %>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-xs-12">
+        <br>
+        <%= yield %>
       </div>
     </div>
   </div>
-  </body>
-
+</div>
+</body>
 </html>

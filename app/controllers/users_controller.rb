@@ -6,13 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
-  # @user = current_user
     @user = User.find(params[:id])
-  #	@cardlists = Cardlist.where(user_id: @user.id)
   end
 
   def index
-  #	@user = current_user
   	@users = User.all
   end
 
